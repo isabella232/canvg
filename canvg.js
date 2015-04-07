@@ -2395,7 +2395,10 @@
 			this.getBoundingBox = function() {
 				var bb = new svg.BoundingBox();
 				for (var i=0; i<this.children.length; i++) {
-					bb.addBoundingBox(this.children[i].getBoundingBox());
+					// if (!this.children[i].getGradient) {
+					if (!this.children[i].getBoundingBox) {
+					 bb.addBoundingBox(this.children[i].getBoundingBox());
+					}
 				}
 				return bb;
 			};
@@ -2644,7 +2647,7 @@
 
 				// apply filters
 				for (var i=0; i<this.children.length; i++) {
-					this.children[i].apply(tempCtx, 0, 0, width + 2*px, height + 2*py);
+					if(this.children[i].apply)	this.children[i].apply(tempCtx, 0, 0, width + 2*px, height + 2*py);
 				}
 
 				// render on me
