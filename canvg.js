@@ -2395,8 +2395,8 @@
 			this.getBoundingBox = function() {
 				var bb = new svg.BoundingBox();
 				for (var i=0; i<this.children.length; i++) {
-					// if (!this.children[i].getGradient) {
-					if (!this.children[i].getBoundingBox) {
+					if (!this.children[i].getGradient) {
+					// if (!this.children[i].getBoundingBox) {
 					 bb.addBoundingBox(this.children[i].getBoundingBox());
 					}
 				}
